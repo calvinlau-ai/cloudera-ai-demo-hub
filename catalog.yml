@@ -1,36 +1,195 @@
-﻿# Cloudera AI Demo Hub - Master Catalog
-# Access is controlled by the 'allowed_teams' list for each demo.
-# Teams: 'sales', 'presales', 'ps'
+# Cloudera AI Demo Hub - Master Catalog
+# This file is the single source of truth for all demos.
+# ------------------------------------------------------------------
+# HOW TO USE:
+# 1. Content 'catalog.yml' file
+# 2. For each demo, customize:
+#    - 'owner': Replace with the GitHub username of the demo creator (e.g., "@jane").
+#    - 'description': Refine to accurately describe your specific implementation.
+#    - 'allowed_teams': Adjust based on who should have access (sales-team, presales-team, ai-engineers).
+# 3. Add new demos by copying a full '- id:' block and updating all fields.
 
 demos:
-  - id: sales_roi_calculator_01
-    name: "Interactive ROI Calculator"
-    path: "demos/llm-applications/roi-calculator"
-    description: "A Streamlit app for Sales to calculate potential client ROI."
-    author: "@james"
-    tags: ["sales-tool", "streamlit", "finance"]
+  # ============================================================================
+  # 01_AI_AGENTS_COPILOTS
+  # ============================================================================
+  - id: agents_customer_chatbot_01
+    name: "Enterprise Customer Service Chatbot"
+    path: "demos/01_AI_Agents_Copilots/customer-service-chatbot"
+    description: "A Retrieval-Augmented Generation (RAG) chatbot that answers customer queries using a knowledge base of product manuals and support tickets. Demonstrates integration with Cloudera's vector search and streaming data."
+    owner: "@REPLACE_WITH_OWNER_GITHUB_HANDLE" # e.g., "@alice"
+    scenario: "AI_Agents_Copilots"
+    capabilities:
+      - "Large Language Model (LLM) Applications"
+      - "Real-time Inference"
+    industry: "all" # Useful for any industry with customer support
+    use_case: "customer-service-automation"
     allowed_teams:
+      - "presales-team"
+      - "ai-engineers"
+
+  - id: agents_internal_copilot_01
+    name: "Internal Knowledge Management Copilot"
+    path: "demos/01_AI_Agents_Copilots/internal-knowledge-copilot"
+    description: "An internal assistant that helps employees find information across company documents, meeting notes, and code repositories. Showcases secure RAG, access control, and reducing time-to-information."
+    owner: "@REPLACE_WITH_OWNER_GITHUB_HANDLE"
+    scenario: "AI_Agents_Copilots"
+    capabilities:
+      - "Large Language Model (LLM) Applications"
+      - "AI Guardrails & Governance" # For internal data security
+    industry: "all"
+    use_case: "employee-productivity"
+    allowed_teams:
+      - "presales-team"
+      - "ai-engineers"
+
+  # ============================================================================
+  # 02_AI_GOVERNANCE_GUARDRAILS
+  # ============================================================================
+  - id: guardrails_content_safety_01
+    name: "LLM Output Content Safety & Compliance Filter"
+    path: "demos/02_AI_Governance_Guardrails/llm-content-safety-filter"
+    description: "A pipeline that scans, scores, and filters LLM-generated content against customizable safety, ethical, and regulatory policies. Demonstrates proactive risk mitigation for generative AI applications."
+    owner: "@REPLACE_WITH_OWNER_GITHUB_HANDLE"
+    scenario: "AI_Governance_Guardrails"
+    capabilities:
+      - "AI Guardrails & Governance"
+      - "Large Language Model (LLM) Applications"
+    industry: "financial-services"
+    use_case: "compliance-automation"
+    allowed_teams:
+      - "presales-team"
+      - "ai-engineers"
+    # Note: 'sales-team' not included by default for this technical governance demo.
+
+  - id: guardrails_bias_fairness_01
+    name: "Model Bias & Fairness Assessment Dashboard"
+    path: "demos/02_AI_Governance_Guardrails/model-bias-fairness-check"
+    description: "An interactive dashboard to evaluate machine learning models for statistical bias across sensitive attributes (gender, race, age). Includes visualizations and fairness metrics for model cards and audits."
+    owner: "@REPLACE_WITH_OWNER_GITHUB_HANDLE"
+    scenario: "AI_Governance_Guardrails"
+    capabilities:
+      - "AI Guardrails & Governance"
+      - "Machine Learning Operations (MLOps)"
+    industry: "all"
+    use_case: "responsible-ai"
+    allowed_teams:
+      - "presales-team"
+      - "ai-engineers"
+
+  - id: guardrails_audit_trails_01
+    name: "End-to-End AI Audit Trail System"
+    path: "demos/02_AI_Governance_Guardrails/compliant-audit-trails"
+    description: "Tracks the full lineage of an AI prediction: from source data and feature transformations to the model version, inference parameters, and the user who requested it. Essential for regulated industries."
+    owner: "@REPLACE_WITH_OWNER_GITHUB_HANDLE"
+    scenario: "AI_Governance_Guardrails"
+    capabilities:
+      - "AI Guardrails & Governance"
+      - "Data Engineering & Pipelines"
+      - "Machine Learning Operations (MLOps)"
+    industry: "financial-services"
+    use_case: "model-auditing"
+    allowed_teams:
+      - "presales-team"
+      - "ai-engineers"
+
+  # ============================================================================
+  # 03_DOCUMENT_AI_AUTOMATION
+  # ============================================================================
+  - id: document_invoice_processing_01
+    name: "Intelligent Invoice Processing Pipeline"
+    path: "demos/03_Document_AI_Automation/invoice-processing-pipeline"
+    description: "Automates the extraction of vendor, date, amount, and line items from PDF/PNG invoices. Validates data against purchase orders and feeds into an ERP system. Demonstrates high-volume document processing."
+    owner: "@REPLACE_WITH_OWNER_GITHUB_HANDLE"
+    scenario: "Document_AI_Automation"
+    capabilities:
+      - "Large Language Model (LLM) Applications"
+      - "Data Engineering & Pipelines"
+    industry: "all"
+    use_case: "accounts-payable-automation"
+    allowed_teams:
+      - "presales-team"
+      - "sales-team" # Sales can show this for business automation
+      - "ai-engineers"
+
+  - id: document_contract_review_01
+    name: "AI-Powered Contract Review & Risk Analyzer"
+    path: "demos/03_Document_AI_Automation/contract-review-analyzer"
+    description: "Analyzes legal contracts to identify clauses, obligations, potential risks, and deviations from a standard template. Summarizes key terms and highlights sections for legal review."
+    owner: "@REPLACE_WITH_OWNER_GITHUB_HANDLE"
+    scenario: "Document_AI_Automation"
+    capabilities:
+      - "Large Language Model (LLM) Applications"
+    industry: "all"
+    use_case: "legal-document-analysis"
+    allowed_teams:
+      - "presales-team"
+      - "ai-engineers"
+
+  - id: document_data_extraction_01
+    name: "Structured Data Extraction from Unstructured Forms"
+    path: "demos/03_Document_AI_Automation/structured-data-extraction"
+    description: "Converts scanned forms, surveys, or applications into structured JSON/CSV data. Handles various layouts and handwritten text using a combination of vision and language models."
+    owner: "@REPLACE_WITH_OWNER_GITHUB_HANDLE"
+    scenario: "Document_AI_Automation"
+    capabilities:
+      - "Large Language Model (LLM) Applications"
+      - "Computer Vision" # If it handles handwritten/scanned docs
+    industry: "healthcare" # e.g., patient intake forms
+    use_case: "form-processing"
+    allowed_teams:
+      - "presales-team"
+      - "ai-engineers"
+
+  # ============================================================================
+  # 04_PREDICTIVE_ML_OPERATIONS
+  # ============================================================================
+  - id: mlops_predictive_maintenance_01
+    name: "Predictive Maintenance for Industrial Equipment"
+    path: "demos/04_Predictive_ML_Operations/predictive-maintenance"
+    description: "Predicts equipment failure from sensor time-series data (vibration, temperature). Includes a full MLOps pipeline: feature engineering, model training, deployment, and a dashboard showing remaining useful life."
+    owner: "@REPLACE_WITH_OWNER_GITHUB_HANDLE"
+    scenario: "Predictive_ML_Operations"
+    capabilities:
+      - "Machine Learning Operations (MLOps)"
+      - "Real-time Inference"
+      - "Data Engineering & Pipelines"
+    industry: "manufacturing"
+    use_case: "asset-uptime-optimization"
+    allowed_teams:
+      - "presales-team"
       - "sales-team"
-      - "presales-team"
-      - "ps-team"
+      - "ai-engineers"
 
-  - id: presales_fraud_detection_01
-    name: "Real-time Fraud Detection Simulator"
-    path: "demos/data-pipelines/fraud-detection"
-    description: "A demo pipeline showcasing real-time analytics for Presales technical talks."
-    author: "@james"
-    tags: ["kafka", "spark", "ml"]
+  - id: mlops_fraud_scoring_01
+    name: "Real-Time Credit Card Fraud Scoring Engine"
+    path: "demos/04_Predictive_ML_Operations/real-time-fraud-scoring"
+    description: "Scores online transactions for fraud in under 100 milliseconds. Features a streaming data pipeline, a live model monitoring dashboard for concept drift, and automated model retraining alerts."
+    owner: "@REPLACE_WITH_OWNER_GITHUB_HANDLE"
+    scenario: "Predictive_ML_Operations"
+    capabilities:
+      - "Real-time Inference"
+      - "Machine Learning Operations (MLOps)"
+      - "Data Engineering & Pipelines"
+    industry: "financial-services"
+    use_case: "fraud-detection"
     allowed_teams:
       - "presales-team"
-      - "ps-team"
-    # NOTE: 'sales-team' is NOT listed. They cannot access this demo.
+      - "sales-team" # High-value business demo
+      - "ai-engineers"
 
-  - id: internal_model_benchmark_01
-    name: "Internal LLM Benchmark Suite"
-    path: "demos/llm-applications/internal-benchmark"
-    description: "Internal tool for comparing model performance. Not for clients."
-    author: "@james"
-    tags: ["llm", "evaluation", "internal"]
+  - id: mlops_customer_churn_01
+    name: "Customer Churn Prediction & Retention Insights"
+    path: "demos/04_Predictive_ML_Operations/customer-churn-prediction"
+    description: "Identifies customers at high risk of churning and provides actionable reasons (feature importance). Includes a batch inference pipeline and a dashboard for the marketing team to prioritize retention campaigns."
+    owner: "@REPLACE_WITH_OWNER_GITHUB_HANDLE"
+    scenario: "Predictive_ML_Operations"
+    capabilities:
+      - "Machine Learning Operations (MLOps)"
+      - "Data Engineering & Pipelines"
+    industry: "telecommunications"
+    use_case: "customer-retention"
     allowed_teams:
-      - "ps-team"
-    # NOTE: Only 'ps' can see this.
+      - "presales-team"
+      - "sales-team"
+      - "ai-engineers"
