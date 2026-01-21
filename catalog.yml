@@ -1,0 +1,36 @@
+﻿# Cloudera AI Demo Hub - Master Catalog
+# Access is controlled by the 'allowed_teams' list for each demo.
+# Teams: 'sales', 'presales', 'ps'
+
+demos:
+  - id: sales_roi_calculator_01
+    name: "Interactive ROI Calculator"
+    path: "demos/llm-applications/roi-calculator"
+    description: "A Streamlit app for Sales to calculate potential client ROI."
+    author: "@james"
+    tags: ["sales-tool", "streamlit", "finance"]
+    allowed_teams:
+      - "sales-team"
+      - "presales-team"
+      - "ps-team"
+
+  - id: presales_fraud_detection_01
+    name: "Real-time Fraud Detection Simulator"
+    path: "demos/data-pipelines/fraud-detection"
+    description: "A demo pipeline showcasing real-time analytics for Presales technical talks."
+    author: "@james"
+    tags: ["kafka", "spark", "ml"]
+    allowed_teams:
+      - "presales-team"
+      - "ps-team"
+    # NOTE: 'sales-team' is NOT listed. They cannot access this demo.
+
+  - id: internal_model_benchmark_01
+    name: "Internal LLM Benchmark Suite"
+    path: "demos/llm-applications/internal-benchmark"
+    description: "Internal tool for comparing model performance. Not for clients."
+    author: "@james"
+    tags: ["llm", "evaluation", "internal"]
+    allowed_teams:
+      - "ps-team"
+    # NOTE: Only 'ps' can see this.

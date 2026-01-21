@@ -1,0 +1,20 @@
+# CLOUDERA AI DEMO HUB - ACCESS CONTROL RULES
+# This file automatically routes Pull Request reviews to the correct team.
+# ============================================================================
+# SECTION 1: Protect the master catalog. Only PS can change it.
+/catalog.yml @Cloudera/ps
+
+# SECTION 2: Protect individual demo folders based on their intended audience.
+# The 'allowed_teams' in catalog.yml should match the teams listed here.
+
+# Sales-focused demos require sales-team approval
+/demos/llm-applications/roi-calculator/ @Cloudera/sales-team @Cloudera/ps
+
+# Presales-focused demos require presales-team approval
+/demos/data-pipelines/fraud-detection/ @Cloudera/presales-team @Cloudera/ps
+
+# Internal-only demos require only PS approval
+/demos/llm-applications/internal-benchmark/ @Cloudera/ps
+
+# SECTION 3: Default rule - PS must review EVERY change as the final gatekeeper.
+* @Cloudera/ps
