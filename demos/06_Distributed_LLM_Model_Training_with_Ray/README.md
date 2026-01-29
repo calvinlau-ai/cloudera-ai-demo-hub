@@ -1,0 +1,3 @@
+This demo is used to show case the approach of distributed LLM model training with Tensor Parallel, over Ray and CML.
+
+We use Llama 3 as the example for the model training. Instead of using [Megatron-LM](https://github.com/NVIDIA/Megatron-LM) or [DeepSpeed](https://github.com/deepspeedai/DeepSpeed), we build the Tensor Parallell pipeline from the scrach, so as to get a better view of the process of Tensor Parallel, and be more flexible in controlling the integration and the process.
