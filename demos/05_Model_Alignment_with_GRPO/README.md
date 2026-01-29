@@ -1,0 +1,1 @@
+See [Handcrafting GRPO from Scratch](https://dasight.github.io/jekyll/update/2025/10/22/handcraft-grpo-from-scratch.html) for detailed explaination of the code.
